@@ -1,0 +1,50 @@
+
+PREVIOUS DISCUSSION SECTION SECTION THAT HAS BEEN EDITED 
+
+
+
+\subsubsection*{\textit{Spiking neural networks (microscopic)}}\\
+
+At the individual neuron level, models have been developed to describe neural activity at the microscopic scale and to capture the complex oscillatory patterns observed in neural systems.  Spiking neural networks, for example, simulate thousands of spiking neurons exhibiting bursting activity and randomly coupled synapses. 
+The purpose of those models is to gain an understanding of the role of cell types and connectivities. Compared to NPMs, they incorporate much greater biological details enhancing their physiological relevance and predictive capabilities. Models of spiking networks have shown the ability to self-organize in order to generate collective frequency rhythms including delta, alpha and gamma oscillations. One notable example is the phenomenological model developed by Izhikevich, which describes a spiking neural network where the spiking dynamics of each neuron reproduce firing responses without describing all ionic currents, unlike HH model \citep{izhikevich2003simple}. By simulating a network of 1000 randomly spiking neurons, alpha and gamma rhythms were successfully generated. Subsequently, this model was extended to a large-scale representation of the mammalian thalamocortical system using as a unit a spiking neural network. It is composed of 22 types of neurons, six-layered cortical microcircuits, multiple thalamic nuclei and finally white matter connectivity informed by diffusion tensor imaging bridging the three different scales \citep{izhikevich2008large}. Through this model, it was shown that variations in frequency rhythms across different brain regions likely arise from differences in white matter connectivity between and among cortical areas. \\
+However, in addition of being tremendously computationally intensive, it is unclear whether spiking neural models can offer meaningful interpretations of empirical data on large-scale brain activity. This uncertainty arises because the  emergent properties of large neuronal ensembles may be entirely unrelated to the activity of individual neurons \citep{raj2020spectral}. In other words, the extensive complexity introduced by numerous equations and parameters in the model can become a `black box', limiting the ability to draw conclusions on the underlying mechanisms \citep{taher2021next, turker2005black}.
+%make sure say integrate and fire model
+
+
+\subsubsection*{\textit{Microcircuit level, multicompartmental models}
+\textit{Human Neocortical Solver (HNN)}}
+
+HNN is a user-friendly software tool to simulate neocortical circuits, in order to interpret human EEG/MEG recordings at the level of circuit activity and cellular mechanisms \citep{neymotin2020human}. As an example, it was used to generate the mu-rhythm composed of alpha and beta rhythms observed in the primary somatosensory cortex to explain the neural origin of spontaneous rhythms \citep{jones2009quantitative}. These types of models can be called multicompartemental models and the activity of the neurons are described with HH equations. This approach can capture the complex electrical signaling that occurs within neurons and can provide a more accurate representation of how neurons interact with one another in neural circuits.  The model tends to reproduce oscillatory evoked responses (\citet{studenova2022non} example where model used recently to simulate alpha). 
+A  detailed cortical microcircuit developed by Hay et al. \citep{hay2011modeling} consists of multiple neuron types with realistic morphologies and electrophysiological properties, and it has been shown to generate resting state EEG features such as the alpha rhythm \citep{yao2022reduced, mazza2022eeg}. It may be used to investigate cellular mechanisms involved in oscillatory generations.\\ 
+Some other examples of popular multi-compartmental models include the NEURON simulator, the GENESIS simulator, and the BlueBrain simulator. Overall, multi-compartmental models have proven to be a valuable tool for studying the complex biophysics of neurons and neural circuits.
+
+
+\subsubsection*{\textit{Spectral Graph Theory}}
+
+In recent years, there has been a growing interest in using spectral graph theory modelling to investigate brain-wide neural activity. This approach suggests that long-range structural connectivity is the key to regulating brain activity, rather than the local activity of individual neurons. \citep{abdelnour2014network, destexhe2009wilson, robinson2005multiscale}. Raj et al. presented a hierarchical, linear, analytic spectral graph model capable of replicating empirical MEG spectra and the spatial distribution of alpha and beta frequency bands\citep{raj2020spectral}. Compared to BNMs and NFMs, the advantage of this type of modelling, is that it gives steady state frequency responses obtained from the eigendecomposition of a graph Laplacian which is a closed-form solution of brain oscillations\citep{verma2022spectral}. This makes them computationally efficient and less time-consuming. However, the lack of clear biological interpretability in the local parameters and gain terms of simpler spectral graph models is a major limitation. A more recent modified spectral graph model by Verma et al. revisited Raj et al. work using a bottom-up approach to make it more biophysically relatable at the local scale while still capable of representing the same spatial patterns as the original model\citep{verma2022spectral}. Despite this improvement, spectral graph models may not be suitable due for capturing a wide range of dynamical solutions that are potentially  represented by non-linear BNMs \citep{verma2022spectral}. Spectral graph theory modelling presents a promising avenue for studying brain-wide neural activity, but it is important to carefully consider its limitations and potential applications in specific research contexts.
+%- Resting state networks: \citep{deco2011emerging}
+
+\subsubsection*{
+\textit{Next generation neural mass models}}
+
+As mentioned in the limitations, NMMs assume that neurons within a population are synchronized and thus are unable to reproduce event-related desynchronisation (ERD), and the latter event-related synchronisation (ERS) at the single population level which Coombes et al. try to address with this next generation of NMM \citep{coombes2019next}. They present a $\theta$-neuron model, which has been shown to have an exact mean-field description for instantaneous pulsatile interactions. By incorporating a more realistic synapse model, the mean-field model is extended to include many of the features of a neural mass model, as well as a further dynamical equation that describes the network synchrony evolution.
+
+% Add Gast Knoshe 2020 2021 montbrio model 
+%- Whole-brain level (macroscopic). Study concurrently with connectivity and fMRI data, talk about NPM at whole brain scale
+
+Gast et al. describe bursting dynamics in spiking neural networks with short-term adaptation using a mean-field approach. Although NMMs are appropriate for studying the emergence of bursting behavior in coupled neural populations, they are of a phenomenological nature and do not provide a clear mechanistic link to the underlying spiking neurons. Therefore, they offer limited insight into the emergence of bursting solely based on a population's intrinsic dynamics. They try to  bridge the gap between the exploration of bursting in spiking neural networks and NMMs.
+
+All these other methods have their own advantages and limitations and the choice of a modelling approach highly depends on the specific research objective. Since we are interested in understanding underlying physiological processes observed at the level of the EEG, NPM integrated in a whole-brain model seem an adequate fit and have new platforms being developed such as the Virtual Brain. NPM have been predominantly useful to understand brain rhythms since the 1970's. 
+%
+%Interesting source for different types of models: `Which model to use for cortical spiking neurons?'
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=1]{Images/Model_Comparison.png}
+%    \caption*{\textbf{Figure 23.  \textit{Taken from Iziekvitch 2004, %comparison between models.}} Add more description... }     
+%    \label{fig:comparison}
+%\end{figure}
+%
+%
+%NOTE: Do we want a section mentioning models replications abnormal alpha oscillations related to a disease? (e.g. Battacharya model)\\
+%
+%\subsection{Future Work or conclusion on the two theories}
